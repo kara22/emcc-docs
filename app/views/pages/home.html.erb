@@ -1,2 +1,35 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "emcc.jpeg"%>');">
+  <div class="banner-content">
+    <h1>Bienvenue sur EMCC Export Docs</h1>
+    <p>Trouvez et téléchargez vos documents</p>
+    <p>Nous sommes le <%= @today %></p>
+    <%= link_to "Téléchargez", documents_path, class: "btn btn-primary btn-lg" %>
+  </div>
+</div>
+
+<div class="container padded" id="category">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Fiches technique matériel", root_path, class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Templates", root_path, class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi matériel - Assurances", root_path, class: "card-category"%>
+    </div>
+  </div>
+</div>
+  <div class="container padded">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi matériel - DMA", root_path, class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Rapport hebdomadaire", root_path, class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi personnel export", root_path, class: "card-category"%>
+    </div>
+  </div>
+</div>

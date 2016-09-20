@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Document.create!(name:"Suivi des temps", tagline:"Vrai fichier", category:"template")
+Document.create!(name:"kara", tagline:"Vrai fichier 2", category:"template")
