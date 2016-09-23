@@ -1,7 +1,8 @@
- <%= simple_form_for @document do |f| %>
+  <%= simple_form_for @document do |f| %>
          <%=f.input :name, placeholder: "Nom du fichier", label: "Quel document ?"%>
          <%=f.input :tagline, placeholder: "Exemple : suivi du chantier", label: "Description ?"%>
          <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export"], prompt: "Quelle catégorie ?"%>
+         <%= f.input :photo, as: :attachinary %>
          <%=f.button :submit, "Editer", class: "btn btn-primary" %>
 
     <% end %>
