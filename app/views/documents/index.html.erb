@@ -13,16 +13,15 @@
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <li>
-            <%= link_to document_path(document) do %>
-            <i class="fa fa-eye"></i>
-            <% end %>
-          </li>
-
-          <li>
             <%= link_to edit_document_path(document) do %>
             <i class="fa fa-pencil"></i>
             <% end %>
-          <li>
+           <li>
+            <%= link_to document.url do %>
+            <i class="fa fa-download"></i>
+            <% end %>
+          </li>
+           <li>
             <%= link_to document_path(document), method: :delete do %>
             <i class="fa fa-trash"></i>
             <% end %>
