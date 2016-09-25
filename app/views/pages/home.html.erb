@@ -2,8 +2,7 @@
   <div class="banner-content">
     <h1>Bienvenue sur EMCC Export Docs</h1>
     <p>Trouvez et téléchargez vos documents</p>
-    <p>Nous sommes le <%= @today %></p>
-    <%= link_to "Téléchargez", documents_path, class: "btn btn-primary btn-lg" %>
+   <a href="#category" class="slide-section"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
   </div>
 </div>
 
@@ -26,7 +25,7 @@
       <%= link_to "Suivi matériel - DMA", documents_path(category: "suivi_materiel_dma"), class: "card-category"%>
     </div>
     <div class="col-xs-12 col-sm-4">
-      <%= link_to "Rapport hebdomadaire", documents_path(category: "rapport_hebdomadaire"), class: "card-category"%>
+      <%= link_to "Rapports hebdomadaires", documents_path(category: "rapport_hebdomadaire"), class: "card-category"%>
     </div>
     <div class="col-xs-12 col-sm-4">
       <%= link_to "Suivi personnel export", documents_path(category: "suivi_personnel_export"), class: "card-category"%>
