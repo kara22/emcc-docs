@@ -4,10 +4,13 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    if params[:category]
+    if params[:category] == "fiche_technique"
+      @documents = Document.where(category: params[:category]).order(:name).paginate(page: params[:page], per_page: 5)
+
+    elsif params[:category]
       @documents = Document.where(category: params[:category]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
-    else
-    @documents = Document.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+   else
+   @documents = Document.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
 
   end
@@ -23,7 +26,7 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
     @document = Document.new(document_params)
     @document.user = current_user
     if @document.save
-        redirect_to documents_path
+        redirect_to new_document_path
     else
         render :new
     end
