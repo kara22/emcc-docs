@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1 class="text-center">All documents</h1>
+      <h1 class="text-center">Documents postés par EMCC</h1>
 
       <% @documents.each do |document| %>
       <div class="product">
@@ -10,6 +10,7 @@
           <h3><%= document.name%></h3>
           <p><%= document.tagline%></p>
           <p><%= document.category%></p>
+          <p>Posté par <%=document.user.email %> le <%=document.user.created_at%></p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <li>
@@ -30,6 +31,8 @@
       </div>
 
       <%end%>
+
+      <%= will_paginate @documents, renderer: BootstrapPagination::Rails, previous_label: "Précédent", next_label: "Suivant", inner_window: 1, outer_window:0 %>
 
       </div>
     </div>

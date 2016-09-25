@@ -5,10 +5,11 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:category]
-      @documents = Document.where(category: params[:category])
+      @documents = Document.where(category: params[:category]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     else
-    @documents = Document.all
+    @documents = Document.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
     end
+
   end
 
   def show
@@ -32,21 +33,21 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-      if @document.user == current_user
+      if @document.user == current_user || current_user.author?
       @document.update(document_params)
       redirect_to documents_path
     else
-       flash[:alert] = "Edition impossible, ce produit n'est pas le vôtre..."
+       flash[:alert] = "Vous n'avez pas posté ce document, donc l'édition est impossible"
        redirect_to documents_path
     end
   end
 
   def destroy
-    if @document.user == current_user
+    if @document.user == current_user || current_user.author?
      @document.destroy
      redirect_to documents_path
     else
-      flash[:alert] = "Suppression impossible, ce produit n'est pas le vôtre..."
+      flash[:alert] = "Vous n'avez pas posté ce document, donc la suppression est impossible."
       redirect_to documents_path
     end
 
@@ -62,6 +63,8 @@ private
   def find_document
   @document = Document.find(params[:id])
   end
+
+
 
 
 end

@@ -2,8 +2,7 @@
          <%=f.input :name, placeholder: "Nom du fichier", label: "Quel document ?"%>
          <%=f.input :tagline, placeholder: "Exemple : suivi du chantier", label: "Description ?"%>
          <%=f.input :url, placeholder: "Exemple : http://dropbox.com/djsiojierz/dl=1", label: "Lien de téléchargement ?"%>
-         <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export"], prompt: "Quelle catégorie ?"%>
-         <%= f.input :photo, as: :attachinary %>
-         <%=f.button :submit, "Editer", class: "btn btn-primary" %>
+         <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export"], label: "* Quelle catégorie ?", prompt: "Quelle catégorie ?"%>
+         <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>
 
     <% end %>
