@@ -38,20 +38,22 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
   def update
       if @document.user == current_user || current_user.author?
       @document.update(document_params)
-      redirect_to documents_path
+      flash[:notice] = "Confirmation: vous avez édité un document"
+      redirect_to root_path
     else
        flash[:alert] = "Vous n'avez pas posté ce document, donc l'édition est impossible"
-       redirect_to documents_path
+       redirect_to root_path
     end
   end
 
   def destroy
     if @document.user == current_user || current_user.author?
      @document.destroy
-     redirect_to documents_path
+     flash[:notice] = "Confirmation: vous avez supprimé un document"
+     redirect_to root_path
     else
       flash[:alert] = "Vous n'avez pas posté ce document, donc la suppression est impossible."
-      redirect_to documents_path
+      redirect_to root_path
     end
 
   end
@@ -60,7 +62,7 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 private
 
   def document_params
-    params.require(:document).permit(:name, :tagline, :category, :url)
+    params.require(:document).permit(:name, :tagline, :category, :url, :photo)
   end
 
   def find_document
