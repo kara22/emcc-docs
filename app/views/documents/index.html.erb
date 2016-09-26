@@ -9,7 +9,6 @@
         <div class='product-body'>
           <h3><%= document.name%></h3>
           <p><%= document.tagline%></p>
-          <p>Posté par <%=document.user.email %></p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
           <li>
@@ -31,7 +30,7 @@
 
       <%end%>
 
-      <%= will_paginate @documents, renderer: BootstrapPagination::Rails, previous_label: "Précédent", next_label: "Suivant", inner_window: 1, outer_window:0 %>
+
 
       </div>
     </div>

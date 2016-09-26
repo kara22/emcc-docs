@@ -5,12 +5,12 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:category] == "fiche_technique"
-      @documents = Document.where(category: params[:category]).order(:name).paginate(page: params[:page], per_page: 5)
+      @documents = Document.where(category: params[:category]).order(:name)
 
     elsif params[:category]
-      @documents = Document.where(category: params[:category]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+      @documents = Document.where(category: params[:category]).order("created_at DESC")
    else
-   @documents = Document.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+   @documents = Document.all.order("created_at DESC")
     end
 
   end
