@@ -5,7 +5,7 @@
   <p>Posté par :
   <%= @document.user.email %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
   </p>
-    <% if @document.tagline != "excel"%>
+    <% if @document.tagline != "excel" %>
       <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
         <i class="fa fa-download"></i>
         <% end %>
