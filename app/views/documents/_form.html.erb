@@ -1,6 +1,6 @@
   <%= simple_form_for @document do |f| %>
          <%=f.input :name, placeholder: "Nom du fichier", label: "Nom du document"%>
-         <%=f.input :tagline, placeholder: "Exemple : suivi du chantier", label: "Description"%>
+         <%=f.input :tagline, collection: ["excel", "pdf", "video", "image", "autre"], label: "Type de fichier", prompt: "Type de fichier" %>
          <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export", "infos_QHSE"], label: "Catégorie", prompt: "Catégorie"%>
          <%= f.input :photo, as: :attachinary %>
          <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>

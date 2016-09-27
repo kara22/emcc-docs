@@ -5,9 +5,14 @@
   <p>Posté par :
   <%= @document.user.email %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
   </p>
-
-    <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw) do %>
-     <i class="fa fa-download"></i>
+    <% if @document.tagline != "excel"%>
+      <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
+        <i class="fa fa-download"></i>
+        <% end %>
+    <%else%>
+        <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw ) do%>
+        <i class="fa fa-download"></i>
+        <% end %>
     <% end %>
   </div>
 </div>
