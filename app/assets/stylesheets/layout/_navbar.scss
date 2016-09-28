@@ -134,3 +134,11 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+
+@media screen and (max-width: 1200px)
+{
+    .slogan {
+   display:none;
+    }
+}
