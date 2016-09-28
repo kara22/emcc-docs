@@ -5,12 +5,16 @@
   <p>Posté par :
   <%= @document.user.email %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
   </p>
-    <% if @document.tagline != "excel" && @document.tagline != "word" && @document.tagline != "powerpoint"%>
+    <% if @document.tagline != "excel" && @document.tagline != "word" && @document.tagline != "powerpoint" && @document.tagline != "video"%>
       <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
         <i class="fa fa-download"></i>
         <% end %>
-    <%else%>
-        <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw ) do%>
+    <% elsif @document.tagline == "video" %>
+        <%= link_to cloudinary_url(@document.photo.path, :resource_type => :video ) do%>
+        <i class="fa fa-download"></i>
+        <% end %>
+        <% else %>
+         <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw ) do%>
         <i class="fa fa-download"></i>
         <% end %>
     <% end %>
