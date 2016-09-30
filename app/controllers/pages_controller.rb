@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @today = Time.now.strftime("%d/%m/%Y")
   end
 
+  def team
+   @users = User.all.order(:email)
+  end
 
 
 end

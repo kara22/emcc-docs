@@ -1,0 +1,15 @@
+
+<div class="container">
+  <h1 class="user-title">EMCC-docs export</h1>
+  <h3 class="user-title">Liste des utilisateurs du site</h3>
+ <% @users.each do |user| %>
+  <ul class="user-list">
+    <ol>
+      <%= user.email %>
+      <% if current_user.author? %>
+      <p>vu le : <%= user.last_seen_at %></p>
+      <%end%>
+    </ol>
+  </ul>
+  <%end%>
+</div>
