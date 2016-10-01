@@ -1,11 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "abidjan.jpg"%>');">
   <div class="banner-content">
     <h1>Bienvenue sur EMCC Export Docs</h1>
+     <% if user_signed_in? %>
     <p>Trouvez et téléchargez vos documents</p>
      <%=link_to "L'équipe" ,team_path, class: "btn btn-primary"%><br>
     <a href="#category" class="slide-section"><i class="fa fa-angle-double-down" aria-hidden="true"></i></a>
+    <%else%>
+    <p>Veuillez vous connecter pour continuer</p>
+    <%end%>
   </div>
 </div>
+<% if user_signed_in? %>
 
 <div class="container padded" id="category">
   <div class="row">
@@ -43,4 +48,6 @@
       </div>
     </div>
   </div>
+<%else%>
+<%end%>
 
