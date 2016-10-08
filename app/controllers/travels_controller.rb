@@ -11,7 +11,7 @@ end
   def show
     @travel = Travel.find(params[:id])
     @manager = User.find_by(full_name:  @travel.manager_name)
-    if current_user == @travel.user || current_user.role == "author"
+    if current_user == @travel.user || current_user.role == "manager"
     else
       flash[:alert] = "Vous ne pouvez pas voir cette demande"
       redirect_to root_path
@@ -68,7 +68,7 @@ end
 
   def valide
   @travel = Travel.find(params[:id])
-    if current_user.role == "author" &&  @travel.manager_name == current_user.full_name
+    if current_user.role == "manager" &&  @travel.manager_name == current_user.full_name
         @travel.update_attributes(valide?: true)
         flash[:notice] = "Vous avez validé une demande de congé"
         redirect_to travel_path

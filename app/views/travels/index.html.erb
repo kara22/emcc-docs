@@ -4,10 +4,11 @@
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
       <h1 class="text-center">Congés</h1>
 
-        <% @travels.each do |travel| %>
+<%@travels.each do |travel| %>
+<%if current_user == travel.user || current_user.role == "manager" %>
         <div class="product">
+
           <div class='product-body'>
-        <%if current_user == travel.user || current_user.role == "author" %>
             <h3><%=travel.user.email%></h3>
             <p>A demandé le <%=travel.created_at.strftime("%d/%m/%Y")%> à poser <%= travel.days_off%> jours (<%= travel.reason%>)</p>
             <p>Responsable :<%= travel.manager_name%></p>
@@ -19,36 +20,39 @@
               <% end %>
             </li>
 
-            <% if travel.valide? %>
-            <li>
-              <%= link_to travel_path(travel), method: :delete do %>
-              <i class="fa fa-trash"></i>
-              <% end %>
-            </li>
+          <% if travel.valide? %>
+                <li>
+                  <%= link_to travel_path(travel), method: :delete do %>
+                  <i class="fa fa-trash"></i>
+                  <% end %>
+                </li>
 
-            <%else%>
-            <li>
-              <%= link_to edit_travel_path(travel) do %>
-              <i class="fa fa-pencil"></i>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to travel_path(travel), method: :delete do %>
-              <i class="fa fa-trash"></i>
-              <% end %>
-            </li>
-            <% if current_user.role == 'author' && current_user.full_name == travel.manager_name %>
-              <li>
-                <%= link_to valide_travel_path(travel),:data => {:confirm => 'Voulez vous valider ce congé ? Cette action est irréversible'}, method: :put  do %>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                 <% end %>
-              </li>
+          <%else%>
+                <li>
+                  <%= link_to edit_travel_path(travel) do %>
+                  <i class="fa fa-pencil"></i>
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to travel_path(travel), method: :delete do %>
+                  <i class="fa fa-trash"></i>
+                  <% end %>
+                </li>
             <%end%>
-           <%end%>
-        </ul>
-      </div>
-      <%end%>
-      <%end%>
+                <%if current_user.role == 'manager' && current_user.full_name == travel.manager_name %>
+                  <li>
+                    <%= link_to valide_travel_path(travel),:data => {:confirm => 'Voulez vous valider ce congé ? Cette action est irréversible'}, method: :put  do %>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <%end%>
+                  </li>
+                <%end%>
+
+            </ul>
+
+          </div>
+          <%end%>
+<%end%>
       </div>
     </div>
   </div>
