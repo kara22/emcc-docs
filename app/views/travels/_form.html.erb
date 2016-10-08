@@ -5,7 +5,7 @@
          <%=f.input :date_of_return,placeholder: "Date de retour", label: "Retour" %>
          <%=f.number_field :days_off, min: 1, placeholder: "Nombre de jours posés"%>
          <%=f.input :reason, collection: ["Congés_payés_Expatriation", "Congés_payés_Caisse", "RTT", "Jour_de_Voyage_pointés_VO", "Récupération", "Jours_fériés_locaux", "Conventionnelle", "Congé_sans_solde"],label: "Motif", prompt: "Choisissez votre motif"%>
-         <%=f.input :manager_name, collection: ["Olivier_Assemat", "Gervais_Bouchard", "Antoine_Djondo", "Marc_Fraillon", "Henri_Seynave"], label: "Responsable hierarchique", prompt: "Choisissez votre manager"%>
+         <%=f.input :manager_name, collection: ["Olivier_Assemat", "Gervais_Bouchard", "Antoine_Djondo", "Marc_Fraillon", "Henri_Seynave"], label: "Responsable hiérarchique", prompt: "Choisissez votre manager"%>
          <%=f.text_area :comment, placeholder: "Votre commentaire"%><br><br>
          <%=f.button :submit, "Soumettre", class: "btn btn-primary" %>
 

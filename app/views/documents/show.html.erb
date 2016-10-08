@@ -3,7 +3,7 @@
   <h1><%= @document.name %></h1>
   <p>Format <%= @document.tagline %></p>
   <p>Posté par :
-  <%= @document.user.email %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
+  <%= @document.user.full_name %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
   </p>
     <% if @document.tagline != "excel" && @document.tagline != "word" && @document.tagline != "powerpoint" && @document.tagline != "video"%>
       <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>

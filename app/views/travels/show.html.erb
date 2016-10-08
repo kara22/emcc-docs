@@ -3,7 +3,7 @@
 
     <h1>Demande de congé ou d'absence EMCC</h1>
     <h3>Pour les salariés expatriés/détachés</h3>
-    <p><b>Nom</b> : <%=@travel.user.email%></p>
+    <p><b>Nom</b> : <%=@travel.user.full_name%></p>
     <p><b>Site</b> : <%=@travel.site%></p>
     <p><b>Matricule</b>: <%=@travel.registration_number%></p>
     <p><b>Dates</b> : <%=@travel.date_of_departure.strftime("%d/%m/%Y")%> au <%=@travel.date_of_return.strftime("%d/%m/%Y")%> (soit <%=@travel.days_off%> jours ouvrables posés)</p>
