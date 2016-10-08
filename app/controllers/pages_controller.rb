@@ -9,5 +9,10 @@ class PagesController < ApplicationController
    @users = User.all.order(:email)
   end
 
+  def documents_category
+  end
+
+  def travels_site
+  end
 
 end

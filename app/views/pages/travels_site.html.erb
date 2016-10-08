@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+<h1 class="text-center">Demandes de congés par site</h1>
+
+<div class="container padded" id="category">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Haiti", travels_path(site: "Haiti"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Kingston, Jamaique", travels_path(site: "Kingston_Jamaique"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Abidjan, Côte d'Ivoire", travels_path(site: "Abidjan_Côte_Ivoire"), class: "card-category"%>
+    </div>
+  </div>
+</div>
+
+  <div class="container padded">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+      <%= link_to "Kamsar, Guinée", travels_path(site: "Kamsar_Guinée"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Lomé, Togo", travels_path(site: "Lomé_Togo"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Cotonou, Bénin", travels_path(site: "Cotonou_Bénin"), class: "card-category"%>
+    </div>
+   </div>
+  </div>
+<%else%>
+<%end%>

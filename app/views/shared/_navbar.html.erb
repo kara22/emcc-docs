@@ -47,7 +47,8 @@
           </ul>
         </div>
       </div>
-      <%= link_to "Ajouter", new_document_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <%= link_to "Ajouter doc", new_document_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+       <%= link_to "Ajouter congé", new_travel_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
       <% else %>
 
       <!-- Login text link -->
@@ -72,9 +73,15 @@
             </li>
             <li>
               <%= link_to new_document_path do %>
-              <i class="fa fa-file"></i> <%= t(".profile", default: " Ajouter ") %>
+              <i class="fa fa-file"></i> <%= t(".profile", default: " Ajouter doc ") %>
               <%end%>
             </li>
+            <li>
+              <%= link_to new_travel_path do %>
+              <i class="fa fa-suitcase"></i> <%= t(".profile", default: " Ajouter congé ") %>
+              <%end%>
+            </li>
+
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>

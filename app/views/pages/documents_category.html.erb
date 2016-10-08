@@ -1,0 +1,41 @@
+<% if user_signed_in? %>
+<h1 class="text-center">Documents par catégorie</h1>
+
+<div class="container padded" id="category">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Fiches technique matériel", documents_path(category: "fiche_technique"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Templates", documents_path(category: "template"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi matériel - Assurances", documents_path(category: "suivi_materiel_assurances"), class: "card-category"%>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi matériel - DMA", documents_path(category: "suivi_materiel_dma"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Rapports hebdomadaires", documents_path(category: "rapport_hebdomadaire"), class: "card-category"%>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <%= link_to "Suivi personnel export", documents_path(category: "suivi_personnel_export"), class: "card-category"%>
+    </div>
+   </div>
+  </div>
+
+
+   <div class="container padded">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= link_to "Informations QSHE", documents_path(category: "infos_QHSE"), class: "card-category"%>
+      </div>
+    </div>
+  </div>
+<%else%>
+<%end%>

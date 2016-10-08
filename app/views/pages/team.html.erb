@@ -7,13 +7,13 @@
     <li>
      <% if user.avatar %>
         <%= cl_image_tag user.avatar.path, width:80, height:80, crop: :fill, class:"avatar dropdown-toggle"%>
-        <%else%>
+     <%else%>
         <%= image_tag "http://placehold.it/40x40", class: "avatar dropdown-toggle"%>
-        <%end%>
+     <%end%>
         <%= user.email %>
-      <% if current_user.author? %>
+    <% if current_user.author? %>
       <p>vu le : <%= user.last_seen_at %></p>
-      <%end%>
+    <%end%>
       </li>
     </ul>
   <%end%>
