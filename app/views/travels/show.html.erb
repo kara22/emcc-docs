@@ -1,42 +1,42 @@
 
 <div class="container kara">
 
-    <h1>Demande de congé ou d'absence EMCC</h1>
-    <h3>Pour les salariés expatriés/détachés</h3>
-    <p><b>Nom</b> : <%=@travel.user.full_name%></p>
-    <p><b>Site</b> : <%=@travel.site%></p>
-    <p><b>Matricule</b>: <%=@travel.registration_number%></p>
-    <p><b>Dates</b> : <%=@travel.date_of_departure.strftime("%d/%m/%Y")%> au <%=@travel.date_of_return.strftime("%d/%m/%Y")%> (soit <%=@travel.days_off%> jours ouvrables posés)</p>
-    <p><b>Motif</b> : <%=@travel.reason%></p>
-    <p><b>Commentaire </b>: <i><%=@travel.comment%></i></p>
-    <%if !@travel.valide? %>
-      <p><b>En attente de validation par</b> : <%=@travel.manager_name%></p>
-    <%else%>
-      <p><b>Validé par</b> : <%=@travel.manager_name%></p>
-    <%end%>
-    <% if !@travel.valide? && current_user == @travel.user%>
-      <%=mail_to @manager.email, "Prévenir le responsable", subject: "Demande de congé", body: "Bonjour, j'ai soumis une demande de congé. Vous pouvez la consulter sur le site http://emcc-docs.herokuapp.com et ainsi la valider. Merci.", class: "navbar-wagon-item navbar-wagon-button btn" %>
-    <%end%>
-<div class="row">
+  <h1>Demande de congé ou d'absence EMCC</h1>
+  <h3>Pour les salariés expatriés/détachés</h3>
+  <p><b>Nom</b> : <%=@travel.user.full_name%></p>
+  <p><b>Site</b> : <%=@travel.site%></p>
+  <p><b>Matricule</b>: <%=@travel.registration_number%></p>
+  <p><b>Dates</b> : <%=@travel.date_of_departure.strftime("%d/%m/%Y")%> au <%=@travel.date_of_return.strftime("%d/%m/%Y")%> (soit <%=@travel.days_off%> jours ouvrables posés)</p>
+  <p><b>Motif</b> : <%=@travel.reason%></p>
+  <p><b>Commentaire </b>: <i><%=@travel.comment%></i></p>
+  <%if !@travel.valide? %>
+  <p><b>En attente de validation par</b> : <%=@travel.manager_name%></p>
+  <%else%>
+  <p><b>Validé par</b> : <%=@travel.manager_name%></p>
+  <%end%>
+  <% if !@travel.valide? && current_user == @travel.user%>
+  <%=mail_to @manager.email, "Prévenir le responsable", subject: "Demande de congé", body: "Bonjour, j'ai soumis une demande de congé. Vous pouvez la consulter sur le site http://emcc-docs.herokuapp.com et ainsi la valider. Merci.", class: "navbar-wagon-item navbar-wagon-button btn" %>
+  <%end%>
+  <div class="row">
     <div class="col-xs-6 col-sm-4">
-        <%if @travel.user.signature%>
-            <p>Signature du demandeur</p>
-            <%= cl_image_tag @travel.user.signature.path, width: 150%>
-        <%else%>
-           <p>Veuillez uploader votre signature dans votre profil</p>
-        <%end%>
-</div>
-<div class="col-xs-6 col-sm-4">
+      <%if @travel.user.signature%>
+      <p>Signature du demandeur</p>
+      <%= cl_image_tag @travel.user.signature.path, width: 150%>
+      <%else%>
+      <p><%=@travel.user.full_name%> doit uploader sa signature dans son profil</p>
+      <%end%>
+    </div>
+    <div class="col-xs-6 col-sm-4">
 
-</div>
-<div class="col-xs-6 col-sm-4">
-    <p>Signature du responsable</p>
-    <%if @travel.valide? && @manager.full_name == @travel.manager_name %>
-        <%= cl_image_tag @manager.signature.path, width: 150 %>
-    <%else%>
-        <p>Votre responsable hierarchique n'a pas encore validé votre demande</p>
-    <%end%>
-</div>
+    </div>
+    <div class="col-xs-6 col-sm-4">
+      <p>Signature du responsable</p>
+      <%if @travel.valide? && @manager.full_name == @travel.manager_name %>
+      <%= cl_image_tag @manager.signature.path, width: 150 %>
+      <%else%>
+      <p>Votre responsable hierarchique n'a pas encore validé votre demande</p>
+      <%end%>
+    </div>
 
 </div>
 </div>

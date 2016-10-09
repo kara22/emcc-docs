@@ -1,4 +1,7 @@
 class TravelsController < ApplicationController
+  before_action :find_travels, only: [:show, :edit, :update, :destroy, :valide]
+
+
 
   def index
     if params[:site]
@@ -6,10 +9,9 @@ class TravelsController < ApplicationController
     else
       @travels = Travel.all.order("created_at DESC")
     end
-end
+  end
 
   def show
-    @travel = Travel.find(params[:id])
     @manager = User.find_by(full_name:  @travel.manager_name)
     if current_user == @travel.user || current_user.role == "manager"
     else
@@ -35,11 +37,14 @@ end
   end
 
   def edit
-    @travel = Travel.find(params[:id])
+    if @travel.user == current_user && !@travel.valide?
+    else
+      flash[:alert] = "Vous n'avez pas les droits pour éditer cette demande"
+      redirect_to root_path
+    end
   end
 
   def update
-    @travel = Travel.find(params[:id])
     if @travel.user == current_user && !@travel.valide?
       @travel.update(travels_params)
       flash[:notice] = "Confirmation: vous avez édité une demande de congé"
@@ -54,7 +59,6 @@ end
   end
 
   def destroy
-  @travel = Travel.find(params[:id])
     if @travel.user == current_user
       @travel.destroy
       flash[:notice] = "Confirmation: vous avez supprimé une demande de congé"
@@ -67,7 +71,6 @@ end
   end
 
   def valide
-  @travel = Travel.find(params[:id])
     if current_user.role == "manager" &&  @travel.manager_name == current_user.full_name
         @travel.update_attributes(valide?: true)
         flash[:notice] = "Vous avez validé une demande de congé"
@@ -78,6 +81,11 @@ end
 
 
   private
+
+
+  def find_travels
+    @travel = Travel.find(params[:id])
+  end
 
   def travels_params
     params.require(:travel).permit(:registration_number, :service,:date_of_departure, :date_of_return, :days_off, :reason, :manager_name, :comment, :site)
