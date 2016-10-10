@@ -22,7 +22,6 @@ class TravelsController < ApplicationController
 
   def new
     @travel = Travel.new
-
   end
 
   def create
@@ -63,7 +62,6 @@ class TravelsController < ApplicationController
       @travel.destroy
       flash[:notice] = "Confirmation: vous avez supprimé une demande de congé"
       redirect_to root_path
-
     else
       flash[:alert] = "Erreur: vous n'avez pas posté cette demande, donc la supression est impossible"
       redirect_to root_path
