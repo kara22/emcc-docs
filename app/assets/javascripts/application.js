@@ -4,8 +4,7 @@
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
-//= require_tree .
-
+//= require_tree
 
 $(document).ready(function() {
 
@@ -19,7 +18,6 @@ $(document).ready(function() {
 
       e.preventDefault();
     });
-
 
 
 });
