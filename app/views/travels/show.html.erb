@@ -14,9 +14,7 @@
   <%else%>
   <p><b>Validé par</b> : <%=@travel.manager_name%></p>
   <%end%>
-  <% if !@travel.valide? && current_user == @travel.user%>
-  <%= mail_to @manager.email, "Prévenir le responsable", subject: "Demande de congé", body: "Bonjour, j'ai soumis une demande de congé. Vous pouvez la consulter sur le site http://emcc-docs.herokuapp.com et ainsi la valider. Merci.", class: "navbar-wagon-item navbar-wagon-button btn" %>
-  <%end%>
+
   <div class="row">
     <div class="col-xs-6 col-sm-4">
       <%if @travel.user.signature%>
