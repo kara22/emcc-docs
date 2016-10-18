@@ -11,7 +11,7 @@
         <div class='product-body'>
         <h3><%=travel.user.full_name%></h3>
           <p>A demandé le <%=travel.created_at.strftime("%d/%m/%Y")%> à poser <%= travel.days_off%> jours (<%= travel.reason%>)</p>
-          <p>Responsable :<%= travel.manager_name%></p>
+          <p>Responsable : <%= travel.manager_name%></p>
         </div>
         <ul class="list-inline product-controls ">
           <li>

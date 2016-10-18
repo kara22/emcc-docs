@@ -3,6 +3,7 @@ class TravelsController < ApplicationController
 
 
 
+
   def index
     if params[:site]
       @travels = Travel.all.order("created_at DESC").where(site: params[:site])
