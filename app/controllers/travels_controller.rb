@@ -26,6 +26,7 @@ class TravelsController < ApplicationController
 
   def create
     @travel = Travel.new(travels_params)
+    @manager = User.find_by(full_name:  @travel.manager_name)
     @travel.user = current_user
       if @travel.save
         flash[:notice] = "Votre demande de congé est en attente de validation"
@@ -33,6 +34,7 @@ class TravelsController < ApplicationController
       else
         render :new
       end
+    UserMailer.notify(@manager).deliver
   end
 
   def edit
