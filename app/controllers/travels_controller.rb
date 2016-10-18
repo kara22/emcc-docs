@@ -34,7 +34,8 @@ class TravelsController < ApplicationController
       else
         render :new
       end
-    UserMailer.notify(@manager).deliver
+    UserMailer.notify(current_user).deliver
+    UserMailer.notify_manager(@manager).deliver
   end
 
   def edit
@@ -71,10 +72,13 @@ class TravelsController < ApplicationController
   end
 
   def valide
+     @manager = User.find_by(full_name:  @travel.manager_name)
+
     if current_user.role == "manager" &&  @travel.manager_name == current_user.full_name
         @travel.update_attributes(valide?: true)
         flash[:notice] = "Vous avez validé une demande de congé"
         redirect_to travel_path
+        UserMailer.manager_validation(@travel.user).deliver
     end
   end
 
