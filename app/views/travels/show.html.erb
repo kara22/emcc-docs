@@ -3,7 +3,7 @@
 
   <h1>Demande de congé ou d'absence EMCC</h1>
   <h3>Pour les salariés expatriés/détachés</h3>
-  <p><b>Nom</b> : <%=@travel.user.full_name%></p>
+  <p><b>Nom complet</b> : <%=@travel.user.full_name%></p>
   <p><b>Site</b> : <%=@travel.site%></p>
   <p><b>Matricule</b>: <%=@travel.registration_number%></p>
   <p><b>Dates</b> : <%=@travel.date_of_departure.strftime("%d/%m/%Y")%> au <%=@travel.date_of_return.strftime("%d/%m/%Y")%> (soit <%=@travel.days_off%> jours ouvrables posés)</p>
@@ -12,16 +12,16 @@
   <%if !@travel.valide? %>
   <p><b>En attente de validation par</b> : <%=@travel.manager_name%></p>
   <%else%>
-  <p><b>Validé par</b> : <%=@travel.manager_name%></p>
+  <p><b>Validé par</b> : <%= @travel.manager_name %></p>
   <%end%>
 
   <div class="row">
     <div class="col-xs-6 col-sm-4">
-      <%if @travel.user.signature%>
+      <% if @travel.user.signature %>
       <p>Signature du demandeur</p>
-      <%= cl_image_tag @travel.user.signature.path, width: 150%>
+      <%= cl_image_tag @travel.user.signature.path, width: 150 %>
       <%else%>
-      <p><%=@travel.user.full_name%> doit uploader sa signature dans son profil</p>
+      <p><%= @travel.user.full_name%> doit uploader sa signature dans son profil </p>
       <%end%>
     </div>
     <div class="col-xs-6 col-sm-4">

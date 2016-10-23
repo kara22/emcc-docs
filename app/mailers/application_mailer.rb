@@ -2,7 +2,7 @@ class ApplicationMailer < ActionMailer::Base
   default from: 'Contact EMCC Export <imane.nahmed@vinci-construction.fr>'
 
   def notify(user)
-    mail(to: user.email, subject: "Votre demande de congé")
+    mail(to: user.email, subject: "Votre demande de congés")
   end
 
   def notify_manager(user)
@@ -10,6 +10,6 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def manager_validation(user)
-    mail(to: user.email, subject: "Votre demande de congé validée")
+    mail(to: user.email, subject: "Votre demande de congés à été validée")
   end
 end

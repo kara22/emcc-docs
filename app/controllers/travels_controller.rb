@@ -44,7 +44,7 @@ class TravelsController < ApplicationController
 
 
   def edit
-    if @travel.user == current_user && !@travel.valide?
+    if @travel.user == current_user && !@travel.valide? || current_user.role == "author"
     else
       flash[:alert] = "Vous n'avez pas les droits pour éditer cette demande"
       redirect_to root_path
@@ -53,7 +53,7 @@ class TravelsController < ApplicationController
 
 
   def update
-    if @travel.user == current_user && !@travel.valide?
+    if @travel.user == current_user && !@travel.valide? || current_user.role == "author"
       @travel.update(travels_params)
       flash[:notice] = "Confirmation: vous avez édité une demande de congé"
       redirect_to root_path
@@ -69,7 +69,7 @@ class TravelsController < ApplicationController
 
 
   def destroy
-    if @travel.user == current_user
+    if @travel.user == current_user || current_user.role == "author"
       @travel.destroy
       flash[:notice] = "Confirmation: vous avez supprimé une demande de congé"
       redirect_to root_path
