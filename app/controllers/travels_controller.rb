@@ -32,7 +32,7 @@ class TravelsController < ApplicationController
     @manager = User.find_by(full_name:  @travel.manager_name)
     @travel.user = current_user
       if @travel.save
-        flash[:notice] = "Votre demande de congé est en attente de validation"
+        flash[:notice] = "#{@travel.user.full_name}, demande de congé est en attente de validation"
         redirect_to root_path
       else
         render :new
@@ -55,13 +55,13 @@ class TravelsController < ApplicationController
   def update
     if @travel.user == current_user && !@travel.valide? || current_user.role == "author"
       @travel.update(travels_params)
-      flash[:notice] = "Confirmation: vous avez édité une demande de congé"
+      flash[:notice] = "Confirmation: #{@travel.user.full_name} vous avez édité une demande de congé"
       redirect_to root_path
     elsif @travel.user == current_user && travel.valide?
       flash[:alert] = "Votre demande a été validée donc l'édition est impossible"
       redirect_to root_path
     else
-      flash[:alert] = "Vous n'avez pas posté cette demande, donc l'édition est impossible"
+      flash[:alert] = "Vous ne pouvez pas éditer cette demande car elle a été postée par #{@travel.user.full_name}"
       redirect_to root_path
     end
   end
@@ -71,10 +71,10 @@ class TravelsController < ApplicationController
   def destroy
     if @travel.user == current_user || current_user.role == "author"
       @travel.destroy
-      flash[:notice] = "Confirmation: vous avez supprimé une demande de congé"
+      flash[:notice] = "Confirmation : #{@travel.user.full_name} vous avez bien supprimé une demande de congé"
       redirect_to root_path
     else
-      flash[:alert] = "Erreur: vous n'avez pas posté cette demande, donc la supression est impossible"
+      flash[:alert] = "Vous ne pouvez pas supprimer cette demande car elle a été postée par #{@travel.user.full_name} "
       redirect_to root_path
     end
   end
