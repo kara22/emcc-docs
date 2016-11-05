@@ -10,10 +10,10 @@
     <p><b>Motif</b> : <%=@travel.reason%></p>
     <p><b>Commentaire </b>: <i><%=@travel.comment%></i></p>
     <%if !@travel.valide? %>
-    <p><b>En attente de validation par</b> : <%=@travel.manager_name%></p>
+      <p><b>En attente de validation par</b> : <%=@travel.manager_name%></p>
     <%else%>
-    <p><b>Validé par</b> : <%= @travel.manager_name %></p>
-<%end%>
+      <p><b>Validé par</b> : <%= @travel.manager_name %></p>
+    <%end%>
 
   <div class="row">
     <div class="col-xs-6 col-sm-4">
@@ -24,15 +24,24 @@
         <p><%= @travel.user.full_name%> doit uploader sa signature dans son profil </p>
       <%end%>
     </div>
+
+
+    <div class="col-xs-6 col-sm-4">
+    </div>
+
     <div class="col-xs-6 col-sm-4">
 
-    </div>
-    <div class="col-xs-6 col-sm-4">
-    <% if !@travel.valide? && current_user.full_name == @travel.manager_name %>
+
+
+    <% if manager_demand %> <!-- use the travel helper to simplify the code (manager_demand?) -->
       <%= mail_to @travel.user.email, "Demander modifications", subject: "Modification de votre congé", body: "Bonjour, j'ai bien pris note de votre demande de congé. Je vous propose une modification (éléments à modifier)", class: "navbar-wagon-item navbar-wagon-button btn" %>
     <%end%>
-      <p>Signature du responsable</p>
-      <%if @travel.valide? && @manager.full_name == @travel.manager_name %>
+
+    <p>Signature du responsable</p>
+
+
+
+      <% if travel_validable? %> <!-- use the travel helper to simplify the code (travel_validable?) -->
         <%= cl_image_tag @manager.signature.path, width: 150 %>
       <%else%>
         <p>Votre responsable hierarchique n'a pas encore validé votre demande</p>

@@ -6,7 +6,7 @@
   <%= @document.user.full_name %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
   </p>
     <% if @document.tagline != "excel" && @document.tagline != "word" && @document.tagline != "powerpoint" && @document.tagline != "video"%>
-      <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
+        <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
         <i class="fa fa-download"></i>
         <% end %>
     <% elsif @document.tagline == "video" %>

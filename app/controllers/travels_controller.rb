@@ -31,12 +31,12 @@ class TravelsController < ApplicationController
     @travel = Travel.new(travels_params)
     @manager = User.find_by(full_name:  @travel.manager_name)
     @travel.user = current_user
-      if @travel.save
+    if @travel.save
         flash[:notice] = "#{@travel.user.full_name}, demande de congé est en attente de validation"
         redirect_to root_path
-      else
-        render :new
-      end
+    else
+      render :new
+    end
     UserMailer.notify(current_user).deliver
     UserMailer.notify_manager(@manager).deliver
   end
