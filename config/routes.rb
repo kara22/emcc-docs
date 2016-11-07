@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get "/team" => "pages#team"
+  get "/localisations" => "pages#localisations"
   get "/documents_category" => "pages#documents_category"
   get "/travels_site" => "pages#travels_site"
+
 
 
   resources  :documents
