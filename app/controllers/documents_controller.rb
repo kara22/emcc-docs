@@ -26,7 +26,7 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
     @document = Document.new(document_params)
     @document.user = current_user
     if @document.save
-        redirect_to new_document_path
+        redirect_to root_path
     else
         render :new
     end

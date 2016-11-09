@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "abidjan.jpg"%>');">
   <div class="banner-content">
     <h1>Bienvenue sur EMCC Export</h1>
-    <p>Cette application est optimisée pour les smartphones et tablettes</p>
+
     <% if user_signed_in? %>
       <p>Trouvez et téléchargez vos documents - <strong><%= link_to "MANUEL D'UTILISATION", "/manuel.pdf/#{@bl_file}",  target: "_blank" %></strong></p>
 
@@ -13,10 +13,6 @@
         <li>
           <%=link_to "Équipe (#{User.count})" ,team_path, class: "btn btn-primary"%>
         </li>
-      </ul> <br>
-
-
-      <ul class="list-inline">
         <li>
           <%= link_to "Documents (#{Document.count})", documents_category_path, class: "btn btn-primary"%>
         </li>
@@ -32,6 +28,7 @@
 
   </div>
 </div>
+
 
 
 

@@ -47,8 +47,9 @@
           </ul>
         </div>
       </div>
-      <%= link_to "Ajouter doc", new_document_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
-       <%= link_to "Ajouter congé", new_travel_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
+      <%= link_to "Ajouter doc", "#", class: "navbar-wagon-item navbar-wagon-button btn", data: {toggle: "modal", target: "#documents"} %>
+      <%= link_to "Ajouter congé", "#", class: "navbar-wagon-item navbar-wagon-button btn",data: {toggle: "modal", target: "#travels"} %>
+
       <% else %>
 
       <!-- Login text link -->
@@ -100,4 +101,58 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="documents" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Ajouter un document</h4>
+      </div>
+      <div class="modal-body">
+       <%= simple_form_for Document.new do |f| %>
+         <%=f.input :name, placeholder: "Nom du fichier", label: "Nom du document"%>
+         <%=f.input :tagline, collection: ["excel", "pdf", "video", "image", "word", "powerpoint"], label: "Type de fichier", prompt: "Type de fichier" %>
+         <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export", "infos_QHSE"],label: "Catégorie", prompt: "Catégorie"%>
+         <%= f.input :photo, as: :attachinary %>
+         <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>
+         <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="travels" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Demander un congé</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for Travel.new do |f| %>
+         <%=f.input :registration_number, label: "Matricule"%>
+         <%=f.input :site, label:"Site", collection: ["Haiti", "Kingston_Jamaique", "Abidjan_Côte_Ivoire", "Kamsar_Guinée", "Lomé_Togo", "Cotonou_Bénin"], prompt: "Choisissez votre site"%>
+         <%=f.input :date_of_departure, placeholder: "Date de départ", label: "Départ"%>
+         <%=f.input :date_of_return,placeholder: "Date de retour", label: "Retour", class: "datepicker" %>
+         <%=f.input :days_off, min: 1, label: "Nombre de jours ouvrés"%>
+         <%=f.input :reason, collection: ["Congés_payés_Expatriation", "Congés_payés_Caisse", "RTT", "Jour_de_Voyage_pointés_VO", "Récupération", "Jours_fériés_locaux", "Conventionnelle", "Congé_sans_solde"],label: "Motif", prompt: "Motif de votre congé"%>
+         <%=f.input :manager_name, collection: ["Olivier_Assemat", "Gervais_Bouchard", "Antoine_Djondo", "Marc_Fraillon", "Henri_Seynave", "Jean_Michel_Chevrier"], label: "Responsable hiérarchique", prompt: "Choisissez votre responsable"%>
+         <%=f.text_area :comment, placeholder: "Votre commentaire"%><br><br>
+         <%=f.button :submit, "Soumettre", class: "btn btn-primary" %><br><br>
+
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 

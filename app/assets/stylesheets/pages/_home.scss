@@ -7,16 +7,10 @@
   font-size:45px;
   text-decoration:none;
   cursor:pointer;
-}
-
-.slide-section:hover {
-  color:white;
-  opacity:0.7
-
-}
-
-#container-map {
-
+   &:hover {
+    color:white;
+    opacity:0.7
+   }
 }
 
 @media screen and (max-width: 320px)

@@ -27,7 +27,7 @@
 @media screen and (max-width: 768px)
 {
     .card-category {
-    height:auto;
+    line-height:auto;
     font-size:15px;
 
     }
@@ -37,6 +37,8 @@
 {
     .card-category {
     margin-top:10px;
+    line-height:100px;
+
 
     }
 
