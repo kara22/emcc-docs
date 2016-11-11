@@ -10,7 +10,7 @@
      <%else%>
         <%= image_tag "http://placehold.it/40x40", class: "avatar dropdown-toggle"%>
      <%end%>
-        <%= user.full_name %>
+      <%= user.full_name %>
     <% if current_user.author? %>
       <p>vu le : <%= user.last_seen_at %></p>
     <%end%>

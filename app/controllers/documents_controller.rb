@@ -9,10 +9,12 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 
     elsif params[:category]
       @documents = Document.where(category: params[:category]).order("created_at DESC")
-   else
-   @documents = Document.all.order("created_at DESC")
-    end
 
+    elsif params[:search]
+      @documents = Document.search(params[:search]).order("created_at DESC")
+    else
+      @documents = Document.all.order("created_at DESC")
+    end
   end
 
   def show

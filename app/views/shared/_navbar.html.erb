@@ -9,6 +9,12 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+<%= form_tag(documents_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search],class: "navbar-wagon-search-input" , placeholder: "Rechercher doc" %>
+<%= button_tag(type: "submit", class: "navbar-wagon-search-btn") do %>
+  <i class="fa fa-search"></i>
+<% end %>
+<% end %>
 
 
     <!-- Different navigation if login or not -->
@@ -47,8 +53,8 @@
           </ul>
         </div>
       </div>
-      <%= link_to "Ajouter doc", "#", class: "navbar-wagon-item navbar-wagon-button btn", data: {toggle: "modal", target: "#documents"} %>
-      <%= link_to "Ajouter congé", "#", class: "navbar-wagon-item navbar-wagon-button btn",data: {toggle: "modal", target: "#travels"} %>
+      <%= link_to "Ajout doc", "#", class: "navbar-wagon-item navbar-wagon-button btn", data: {toggle: "modal", target: "#documents"} %>
+      <%= link_to "Ajout congé", "#", class: "navbar-wagon-item navbar-wagon-button btn",data: {toggle: "modal", target: "#travels"} %>
 
       <% else %>
 
