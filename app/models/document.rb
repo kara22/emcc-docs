@@ -12,6 +12,7 @@ class Document < ApplicationRecord
     message: "%{value} N'est pas une catégorie valide" }
 
   def self.search(search)
-  where("name LIKE ?", "%#{search}%")
+  where("name LIKE ?", "%#{search.capitalize}%")
+
   end
 end
