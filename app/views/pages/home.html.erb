@@ -8,16 +8,28 @@
 
       <ul class="list-inline">
         <li>
-          <%= link_to "Localisations", localisations_path, class: "btn btn-primary"%>
+          <%= link_to localisations_path do %>
+            <%= image_tag "database.png", width: "60px", alt: "Localisations"%>
+          <%end%>
+          <p class="text-banner-under-img">Localisations</p>
         </li>
         <li>
-          <%=link_to "Équipe (#{User.count})" ,team_path, class: "btn btn-primary"%>
+          <%= link_to team_path do %>
+            <%= image_tag "team.png", width: "60px", alt: "Team"%>
+          <%end%>
+          <p class="text-banner-under-img">Team</p>
         </li>
         <li>
-          <%= link_to "Documents (#{Document.count})", documents_category_path, class: "btn btn-primary"%>
+          <%= link_to documents_category_path do %>
+            <%= image_tag "document.png", width: "50px", alt: "Documents", title: "Documents", id: "document-img-mobile" %>
+          <%end%>
+          <p class="text-banner-under-img">Documents</p>
         </li>
         <li>
-          <%=link_to "Congés" ,travels_site_path, class: "btn btn-primary"%>
+          <%= link_to travels_site_path do %>
+            <%= image_tag "travel.png", width: "60px", alt: "Travel"%>
+          <%end%>
+          <p class="text-banner-under-img">Congés</p>
         </li>
       </ul>
     <%else%>
