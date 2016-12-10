@@ -5,7 +5,6 @@
     <% if user_signed_in? %>
       <p>Trouvez et téléchargez vos documents - <strong><%= link_to "MANUEL D'UTILISATION", "/manuel.pdf/#{@bl_file}",  target: "_blank" %></strong></p>
 
-
       <ul class="list-inline">
         <li>
           <%= link_to localisations_path do %>
@@ -17,13 +16,13 @@
           <%= link_to team_path do %>
             <%= image_tag "team.png", width: "60px", alt: "Team"%>
           <%end%>
-          <p class="text-banner-under-img">Team</p>
+          <p class="text-banner-under-img">Team (<%=User.count%>)</p>
         </li>
         <li>
           <%= link_to documents_category_path do %>
-            <%= image_tag "document.png", width: "50px", alt: "Documents", title: "Documents", id: "document-img-mobile" %>
+            <%= image_tag "document.png", width: "45px", alt: "Documents", title: "Documents", id: "document-img-mobile" %>
           <%end%>
-          <p class="text-banner-under-img">Documents</p>
+          <p class="text-banner-under-img">Documents (<%=Document.count%>)</p>
         </li>
         <li>
           <%= link_to travels_site_path do %>
@@ -35,6 +34,8 @@
     <%else%>
 
       <p>Veuillez vous connecter pour continuer</p>
+
+      <p> <%=number_to_currency(244+767, locale: :fr )%> </p>
 
     <%end%>
 

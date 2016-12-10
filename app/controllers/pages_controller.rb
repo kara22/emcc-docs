@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def team
-   @users = User.all.order(:full_name)
+   @users = User.all.order(:full_name).includes(:documents)
   end
 
   def documents_category

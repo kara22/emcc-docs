@@ -142,8 +142,8 @@
         <%= simple_form_for Travel.new do |f| %>
          <%=f.input :registration_number, label: "Matricule"%>
          <%=f.input :site, label:"Site", collection: ["Haiti", "Kingston_Jamaique", "Abidjan_Côte_Ivoire", "Kamsar_Guinée", "Lomé_Togo", "Cotonou_Bénin"], prompt: "Choisissez votre site"%>
-         <%=f.input :date_of_departure, placeholder: "Date de départ", label: "Départ"%>
-         <%=f.input :date_of_return,placeholder: "Date de retour", label: "Retour", class: "datepicker" %>
+         <%=f.text_field :date_of_departure, placeholder: "Date de départ", label: "Départ", class: "datepicker"%>
+         <%=f.text_field :date_of_return,placeholder: "Date de retour", label: "Retour", class: "datepicker" %>
          <%=f.input :days_off, min: 1, label: "Nombre de jours ouvrés"%>
          <%=f.input :reason, collection: ["Congés_payés_Expatriation", "Congés_payés_Caisse", "RTT", "Jour_de_Voyage_pointés_VO", "Récupération", "Jours_fériés_locaux", "Conventionnelle", "Congé_sans_solde"],label: "Motif", prompt: "Motif de votre congé"%>
          <%=f.input :manager_name, collection: ["Olivier_Assemat", "Gervais_Bouchard", "Antoine_Djondo", "Marc_Fraillon", "Henri_Seynave", "Jean_Michel_Chevrier"], label: "Responsable hiérarchique", prompt: "Choisissez votre responsable"%>

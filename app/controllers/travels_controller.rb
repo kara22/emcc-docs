@@ -71,7 +71,7 @@ class TravelsController < ApplicationController
   def destroy
     if @travel.user == current_user || current_user.role == "author"
       @travel.destroy
-      flash[:notice] = "Confirmation : #{@travel.user.full_name} vous avez bien supprimé une demande de congé"
+      flash[:notice] = "Confirmation : #{@current_user.full_name} vous avez bien supprimé une demande de congé"
       redirect_to root_path
     else
       flash[:alert] = "Vous ne pouvez pas supprimer cette demande car elle a été postée par #{@travel.user.full_name} "

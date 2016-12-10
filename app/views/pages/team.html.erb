@@ -14,6 +14,9 @@
     <% if current_user.author? %>
       <p>vu le : <%= user.last_seen_at %></p>
     <%end%>
+    <% if user.documents.count != 0 %>
+      <p>Documents postés : <%= user.documents.count%></p>
+    <%end%>
       </li>
     </ul>
   <%end%>

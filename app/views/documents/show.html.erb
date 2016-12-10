@@ -2,20 +2,22 @@
   <div class="banner-content">
   <h1><%= @document.name %></h1>
   <p>Format <%= @document.tagline %></p>
-  <p>Posté par :
-  <%= @document.user.full_name %> le <%= @document.created_at.strftime("%d/%m/%Y") %>
+  <p>Posté par
+  <%= @document.user.full_name %> le <%= @document.created_at.strftime("%d/%m/%Y à %H:%M UTC")%> </p>
+  <p>Mis à jour le <%= @document.updated_at.strftime("%d/%m/%Y à %H:%M UTC")%></p>
   </p>
+
     <% if @document.tagline != "excel" && @document.tagline != "word" && @document.tagline != "powerpoint" && @document.tagline != "video"%>
         <%= link_to Cloudinary::Utils.cloudinary_url(@document.photo.path), target: "_blank" do %>
-        <i class="fa fa-download"></i>
+        <i class="fa fa-download download-icon"></i>
         <% end %>
     <% elsif @document.tagline == "video" %>
         <%= link_to cloudinary_url(@document.photo.path, :resource_type => :video ) do%>
-        <i class="fa fa-download"></i>
-        <% end %>
-        <% else %>
+        <i class="fa fa-download download-icon"></i>
+         <% end %>
+    <% else %>
          <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw ) do%>
-        <i class="fa fa-download"></i>
+        <i class="fa fa-download download-icon"></i>
         <% end %>
     <% end %>
   </div>

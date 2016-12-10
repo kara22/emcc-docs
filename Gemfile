@@ -14,6 +14,7 @@ gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'will_paginate', '~> 3.1', '>= 3.1.3'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
 
 gem 'sass-rails'

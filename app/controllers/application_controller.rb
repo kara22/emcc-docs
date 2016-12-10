@@ -18,7 +18,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
 private
 def set_last_seen_at
-  current_user.update_attribute(:last_seen_at, Time.zone.now)
+  current_user.update_attribute(:last_seen_at, Time.now)
 end
 
 end
