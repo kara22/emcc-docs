@@ -12,11 +12,11 @@
         <i class="fa fa-download download-icon"></i>
         <% end %>
     <% elsif @document.tagline == "video" %>
-        <%= link_to cloudinary_url(@document.photo.path, :resource_type => :video ) do%>
+        <%= link_to cloudinary_url(@document.photo.path, :resource_type => :video) do%>
         <i class="fa fa-download download-icon"></i>
          <% end %>
     <% else %>
-         <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw ) do%>
+         <%= link_to cloudinary_url(@document.photo.path, :resource_type => :raw) do%>
         <i class="fa fa-download download-icon"></i>
         <% end %>
     <% end %>
