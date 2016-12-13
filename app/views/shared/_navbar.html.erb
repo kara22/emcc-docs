@@ -146,7 +146,7 @@
          <%=f.text_field :date_of_return,placeholder: "Date de retour", label: "Retour", class: "datepicker" %>
          <%=f.input :days_off, min: 1, label: "Nombre de jours ouvrés"%>
          <%=f.input :reason, collection: ["Congés_payés_Expatriation", "Congés_payés_Caisse", "RTT", "Jour_de_Voyage_pointés_VO", "Récupération", "Jours_fériés_locaux", "Conventionnelle", "Congé_sans_solde"],label: "Motif", prompt: "Motif de votre congé"%>
-         <%=f.input :manager_name, collection: User.where(role: "manager"), label_method: :full_name, value_method: :full_name, label: "Choisissez votre manager", input_html: {class: 'chosen-select'}  %>  <br>
+         <%=f.input :manager_name, collection: User.where(role: "manager"), label_method: :full_name, value_method: :full_name, label: "Choisissez votre manager" %>  <br>
          <%=f.text_area :comment, placeholder: "Votre commentaire"%><br><br>
          <%=f.button :submit, "Soumettre", class: "btn btn-primary" %><br><br>
 
