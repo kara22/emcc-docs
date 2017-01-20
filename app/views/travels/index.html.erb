@@ -3,6 +3,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1">
       <h1 class="text-center">Congés</h1>
+      <% if Travel.count == 0 %>
+      <p class="text-center">Ici s'afficheront vos demandes de congés</p>
+      <%end%>
 
       <%@travels.each do |travel| %>
       <%if current_user == travel.user || current_user.role == "manager" %>
