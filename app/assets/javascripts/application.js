@@ -6,7 +6,10 @@
 //= require attachinary
 //= require bootstrap-datepicker
 //= require chosen-jquery
+//= require underscore
+//= require gmaps/google
 //= require_tree
+
 
 $(document).ready(function() {
 
