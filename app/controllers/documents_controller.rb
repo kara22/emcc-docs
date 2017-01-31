@@ -64,7 +64,7 @@ before_action :find_document, only: [:show, :edit, :update, :destroy]
 private
 
   def document_params
-    params.require(:document).permit(:name, :tagline, :category, :url, :photo)
+    params.require(:document).permit(:name, :tagline, :category, :url, :fichier)
   end
 
   def find_document

@@ -119,7 +119,7 @@
          <%=f.input :name, placeholder: "Nom du fichier", label: "Nom du document"%>
          <%=f.input :tagline, collection: ["excel", "pdf", "video", "image", "word", "powerpoint"], label: "Type de fichier", prompt: "Type de fichier" %>
          <%=f.input :category, collection: ["fiche_technique", "template", "suivi_materiel_assurances", "suivi_materiel_dma", "rapport_hebdomadaire", "suivi_personnel_export", "infos_QHSE"],label: "Catégorie", prompt: "Catégorie"%>
-         <%= f.input :photo, as: :attachinary %>
+         <%= f.input :fichier, as: :attachinary %>
          <%=f.button :submit, "Ajouter", class: "btn btn-primary" %>
          <% end %>
       </div>
