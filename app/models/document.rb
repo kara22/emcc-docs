@@ -1,7 +1,7 @@
 class Document < ApplicationRecord
 
 
-  has_attachment :fichier
+  has_attachment :photo
 
   belongs_to :user
 
