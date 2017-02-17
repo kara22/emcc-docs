@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="text-center">Bons de commandes <%= link_to "+", new_order_path%> </h1><br>
+
+
+<div id="table">
+
+
+<table>
+  <thead>
+    <tr class="thead">
+      <th class="text-center">Entité</th>
+      <th class="text-center">Fournisseur</th>
+      <th class="text-center">N°CDE</th>
+      <th class="text-center">Date CDE</th>
+      <th class="text-center">Date Livraison</th>
+      <th class="text-center">Désignation</th>
+      <th class="text-center">Prix total</th>
+      <th class="text-center">Signataire</th>
+      <th class="text-center">Voir, Editer, Supprimer</th>
+    </tr>
+  </thead>
+
+<%@orders.each do |order| %>
+<tbody>
+<tr>
+    <th class="text-center"><%= order.entity%></th>
+    <td class="text-center"><%= order.supplier%></td>
+    <td class="text-center"><%= order.order_number%></td>
+    <td class="text-center"><%= order.order_date%></td>
+    <td class="text-center"><%= order.delivery_scheduled%></td>
+    <td class="text-center"><%= order.designation%></td>
+    <td class="text-center"><%= order.total_price%></td>
+    <td class="text-center"><%= order.order_signatory%></td>
+    <td class="text-center">
+  <ul class="list-inline product-controls">
+     <li><%= link_to order_path(order) do %>
+          <i class="fa fa-eye"></i>
+          <% end %>
+    </li>
+
+     <li> <%= link_to edit_order_path(order) do %>
+          <i class="fa fa-pencil"></i>
+           <%end%>
+    </li>
+
+    <li><%= link_to order_path(order), method: :delete do %>
+        <i class="fa fa-trash"></i>
+        <% end %>
+    </li>
+</ul>
+
+</tr>
+</tbody>
+<%end%>
+
+   </table>
+   </div>
+</div>

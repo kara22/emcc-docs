@@ -4,8 +4,10 @@ class User < ApplicationRecord
 
   has_many :documents
   has_many :travels
+  has_many :orders
   has_attachment :avatar
   has_attachment :signature
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

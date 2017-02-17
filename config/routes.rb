@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources  :documents
 
   resources :travels
+  resources :orders
 
   put "/travels/:id/valide" => "travels#valide", :as => "valide_travel"
 

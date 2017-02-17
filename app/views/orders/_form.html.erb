@@ -1,0 +1,14 @@
+  <%= simple_form_for @order do |f| %>
+
+         <%=f.input :entity, label: "Entité"%>
+         <%=f.input :supplier, label:"Fournisseur"%>
+         <%=f.input :order_number, label:"N° de commande"%>
+         <%=f.text_field :order_date, placeholder: "Date de commande", label: "Date de commande", class: "datepicker" %>
+          <%=f.text_field :delivery_scheduled, placeholder: "Livraison prévue", label: "Date de commande", class: "datepicker" %><br><br>
+         <%=f.input :designation, label: "Désignation"%>
+         <%=f.input :total_price, label: "Prix total"%>
+         <%=f.input :order_signatory, label: "Signataire" %>  <br>
+         <%=f.input :bon_de_commande, as: :attachinary %>
+         <%=f.button :submit, "Valider", class: "btn btn-primary" %><br><br>
+
+    <% end %>
