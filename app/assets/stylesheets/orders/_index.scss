@@ -8,16 +8,26 @@ thead th {
     text-transform: uppercase;
 }
 
+#large {
+  width:70px;
+}
+
 th, td {
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     padding: 5px;
     text-align: left;
     border-bottom: 1px inset #eeeeee;
     width: 33.3333%;
 }
+.text-left {
+  text-align:left;
+}
 
+.text-right {
+  text-align:right;
+}
 
 th {
     font-weight: bold;
