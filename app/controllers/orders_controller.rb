@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
    @order = Order.new(order_params)
     @order.user = current_user
     if @order.save
-        render :new
+        redirect_to root_path
     else
         render :new
     end
